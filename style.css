@@ -1,0 +1,120 @@
+:root{
+    --color-fondo-general: rgb(0, 50, 177);
+    --color-letra-fondo-oscuro: rgb(255, 255, 255);
+    --color-fondo-secundario: rgb(95, 154, 255);
+    --color-btn-opciones: rgb(0, 21, 96);
+    --color-btn-cerrar-sesion: rgb(255, 0, 0);
+}
+
+body{
+    background-color: var(--color-fondo-general);
+}
+
+.inicio{
+    width: 100vw;
+    height: 100vh;
+    color: var(--color-letra-fondo-oscuro);
+}
+
+#pantallaInicio{
+    width: 500px;
+}
+
+.btn-inicio{
+    font-size: 1.5rem;
+    color: var(--color-letra-fondo-oscuro);
+    height: 4rem;
+    background-color: var(--color-fondo-secundario);
+    border: 0;
+}
+
+.btn-inicio:active{
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px, rgba(78, 78, 78, 0.4) 0px 0px 3px 3px inset;
+    transform: translateX(2px);
+    transform: translateY(2px);
+}
+
+#pantallaIngreso{
+    display: none;
+    width: 500px;
+}
+
+.formularioIngreso{
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+#usuarioError{
+    display: none;
+}
+
+#pantallaOpcionesUsuario{
+    display: none;
+    width: 700px;
+    background-color: var(--color-fondo-secundario);
+}
+
+.filaSaldo{
+    height: 50px;
+}
+
+.btn-opciones{
+    width: 100%;
+    font-size: 1.5rem;
+    color: var(--color-letra-fondo-oscuro);
+    height: 4rem;
+    background-color: var(--color-btn-opciones);
+    
+}
+
+.btn-opciones:active{
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px, rgba(160, 160, 160, 0.4) 0px 0px 3px 3px inset;
+    transform: translateX(1px);
+    transform: translateY(1px);
+}
+
+#pantallaIngresarSaldo{
+    width: 600px;
+    display: none;
+}
+
+#saldoIngresa{
+    width: 100%;
+}
+
+#pantallaRetirar{
+    width: 600px;
+    display: none;
+}
+
+#retiroSaldo{
+    width: 100%;
+}
+
+.btn-cerrar-sesion{
+    width: 100%;
+    font-size: 1.5rem;
+    color: var(--color-letra-fondo-oscuro);
+    height: 4rem;
+    background-color: var(--color-btn-cerrar-sesion);
+    
+}
+
+.btn-cerrar-sesion:active{
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px, rgba(160, 160, 160, 0.4) 0px 0px 3px 3px inset;
+    transform: translateX(1px);
+    transform: translateY(1px);
+}
+
+#pantallaCrearCuenta{
+    width: 500px;
+    display: none;
+}
+
+#cuentaExito{
+    display: none;
+}
+
+#eligeOtroUsuario{
+    display: none;
+}

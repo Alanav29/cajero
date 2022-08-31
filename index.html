@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cajero</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./images/iconocajero.svg">
+  </head>
+  <body>
+    <div class="inicio d-flex justify-content-center align-items-center">
+        <div id="pantallaInicio" class="container mx-2">
+            <div class="row">
+                <h1 class="d-flex justify-content-center">Bienvenido</h1>
+            </div>
+            <div class="row cols-auto">
+                <button id="btn-ingreso" class="col btn-inicio border-end">Ingresar</button>
+                <button id="btn-crearCuenta" class="col btn-inicio">Crear cuenta</button>
+            </div>
+        </div>
+        <div id="pantallaIngreso" class="container mx-2">
+            <div class="row">
+                <h1 class="d-flex justify-content-center">Ingresa</h1>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <form class="formularioIngreso d-flex justify-content-center">
+                    <label for="usuarioIntroducido"><h2>Usuario</h2></label>
+                    <input id="usuarioIntroducido" name="usuarioIntroducido" type="text" placeholder="Introduce tu usuario">
+                    <label for="passwordIntroducido"><h2>Contraseña</h2></label>
+                    <input name="passwordIntroducido" id="passwordIntroducido" type="password" placeholder="Ingresa tu contraseña">
+                    <div class="text-danger" id="usuarioError">Revisa tus datos</div>
+                    <button id="btn-iniciarSesion" class="mt-2 btn-inicio">Iniciar Sesión</button>
+                </form>
+            </div>
+        </div>
+        <div id="pantallaOpcionesUsuario" class="container mx-2">
+            <div class="row cols-auto d-flex align-items-center filaSaldo">
+                <div class="col-2">
+                    <div class="h2 mb-0 pb-0">Saldo</div>
+                </div>
+                <div class="col d-flex">
+                    <h2 class="mb-0 pb-0">$</h2>
+                    <h2 id="saldoUsuario" class="mb-0 pb-0"></h2>
+                </div>
+            </div>
+            <div class="row cols-auto">
+                <div class="col m-0 p-0">
+                    <button id="ingresarSaldo" class="btn-opciones m-0 p-0">Ingresar saldo</button>
+                </div>
+                <div class="col m-0 p-0">
+                    <button id="retirarSaldo" class="btn-opciones m-0 p-0">Retirar</button>
+                </div>
+            </div>
+            <div class="row cols-auto">
+                <div class="col m-0 p-0">
+                    <button id="cerrarSesion" class="btn-cerrar-sesion m-0 p-0">Cerrar Sesion</button>
+                </div>
+            </div>
+        </div>
+        <div id="pantallaIngresarSaldo" class="container mx-2">
+            <form>
+                <div class="row cols-auto d-flex align-items-center filaSaldo">
+                    <div class="col-6 m-0 p-0">
+                        <div class="h2 mb-0 pb-0">Monto a Ingresar</div>
+                    </div>
+                    <div class="col-6 d-flex m-0 p-0">
+                        <h2 class="mb-0 pb-0">$</h2>
+                        <input type="number" id="saldoIngresa" class="mb-0 pb-0" placeholder="Click aqui para escribir monto">
+                    </div>
+                </div>
+                <div class="row cols-auto">
+                    <div class="col m-0 p-0">
+                        <button id="ingresarMonto" class="btn-opciones m-0 p-0">Ingresar monto</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="pantallaRetirar" class="container mx-2">
+            <form>
+                <div class="row cols-auto d-flex align-items-center filaSaldo">
+                    <div class="col-6 m-0 p-0">
+                        <div class="h2 mb-0 pb-0">Monto a retirar</div>
+                    </div>
+                    <div class="col-6 d-flex m-0 p-0">
+                        <h2 class="mb-0 pb-0">$</h2>
+                        <input type="number" id="retiroSaldo" class="mb-0 pb-0" placeholder="Click aqui para escribir monto">
+                    </div>
+                </div>
+                <div class="row cols-auto">
+                    <div class="col m-0 p-0">
+                        <button id="ingresaRetiro" class="btn-opciones m-0 p-0">Retirar monto</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="pantallaCrearCuenta" class="container mx-2">
+            <div class="row cols-auto">
+                <h1 class="col m-0 p-0">Nueva Cuenta</h1>
+            </div>
+            <form>
+                <div class="row cols-auto">
+                    <h2 class="col m-0 p-0">Usuario</h2>
+                </div>
+                <div class="row cols-auto">
+                    <input id="usuarioNuevaCuenta" type="text">
+                </div>
+                <div id="eligeOtroUsuario" class="row cols-auto">
+                    <div class="col">Elige otro usuario</div>
+                </div>
+                <div class="row cols-auto">
+                    <h2 class="col m-0 p-0">Contraseña</h2>
+                </div>
+                <div class="row cols-auto">
+                    <input id="passwordNuevaCuenta" type="password">
+                </div>
+                <div id="cuentaExito" class="row cols-auto">
+                    <div class="col">La cuenta ha sido agregada</div>
+                </div>
+                <div class="row cols-auto mt-2">
+                    <button id="agregarCuenta" class="btn-cerrar-sesion">Crear Cuenta</button>
+                </div>
+            </form>
+            <div class="row cols-auto mt-2">
+                <button id="regresarDesdeCrearCuenta" class="btn-opciones">Regresar</button>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
