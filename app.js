@@ -136,6 +136,8 @@ btnIngresarSaldo.addEventListener('click', function (){
     pantallaIngreso.style.display = 'none';
     pantallaOpcionesUsuario.style.display = 'none';
     pantallaIngresarSaldo.style.display = 'block';
+    saldoMaximo.style.display= 'none';
+    saldoMinimo.style.display= 'none';
     } else {
         saldoMaximo.style.display= 'block';
     }
@@ -150,6 +152,8 @@ btnRetirarSaldo.addEventListener('click', function (){
     pantallaOpcionesUsuario.style.display = 'none';
     pantallaIngresarSaldo.style.display = 'none';
     pantallaRetirar.style.display = 'block';
+    saldoMinimo.style.display= 'none';
+    saldoMaximo.style.display= 'none';
     }
 })
 
@@ -169,6 +173,7 @@ btnIngresarMonto.addEventListener('click', function (e){
         pantallaIngreso.style.display = 'none';
         pantallaOpcionesUsuario.style.display = 'block';
         pantallaIngresarSaldo.style.display = 'none';
+        saldoMaximoIngresar.style.display='none';
         usuarioEnUso.cantidadCuenta=document.getElementById('saldoIngresa').value + '+' + usuarioEnUso.cantidadCuenta
         result = evaluaArimetica(usuarioEnUso.cantidadCuenta)
         usuarioEnUso.cantidadCuenta= result
@@ -190,6 +195,7 @@ btnIngresaRetiro.addEventListener('click', function (e){
     pantallaOpcionesUsuario.style.display = 'block';
     pantallaIngresarSaldo.style.display = 'none';
     pantallaRetirar.style.display = 'none';
+    saldoMinimoIngresar.style.display='none';
     usuarioEnUso.cantidadCuenta= usuarioEnUso.cantidadCuenta + '-' +  document.getElementById('retiroSaldo').value;
     let result = evaluaArimetica(usuarioEnUso.cantidadCuenta)
     usuarioEnUso.cantidadCuenta= result
