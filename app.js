@@ -16,6 +16,7 @@ const btnAgregarCuenta = document.getElementById('agregarCuenta');
 const msgCuentaExitosa = document.getElementById('cuentaExito');
 const btnRegresarDesdeCrearCuenta = document.getElementById('regresarDesdeCrearCuenta');
 const msgEligeOtroUsuario = document.getElementById('eligeOtroUsuario');
+const usuarioError = document.getElementById('usuarioError');
 let usuarioEnUso='';
 let usuarioIntroducido='';
 let passwordIntroducido='';
@@ -99,6 +100,12 @@ btnIniciarSesion.addEventListener('click', function (e){
     usuarioIntroducido = document.getElementById('usuarioIntroducido').value;
     passwordIntroducido = document.getElementById('passwordIntroducido').value;
     usuarioEnUso = usuarios.find(usuario=> usuario.nombre === usuarioIntroducido );
+
+    if(usuarioEnUso){
+        
+    }else{
+        usuarioError.style.display = 'block';
+    }
     
     if( usuarioEnUso.nombre && usuarioEnUso.password==passwordIntroducido){
     
@@ -107,7 +114,6 @@ btnIniciarSesion.addEventListener('click', function (e){
 
     }
     else{
-    const usuarioError = document.getElementById('usuarioError');
     usuarioError.style.display = 'block';
     }
 
