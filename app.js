@@ -17,6 +17,10 @@ const msgCuentaExitosa = document.getElementById('cuentaExito');
 const btnRegresarDesdeCrearCuenta = document.getElementById('regresarDesdeCrearCuenta');
 const msgEligeOtroUsuario = document.getElementById('eligeOtroUsuario');
 const usuarioError = document.getElementById('usuarioError');
+const saldoMaximo = document.getElementById('saldoMaximo');
+const saldoMinimo = document.getElementById('saldoMinimo');
+const saldoMaximoIngresar = document.getElementById('saldoMaximoIngresar');
+const saldoMinimoIngresar = document.getElementById('saldoMinimoIngresar');
 let usuarioEnUso='';
 let usuarioIntroducido='';
 let passwordIntroducido='';
@@ -28,17 +32,17 @@ let usuarios = [
         {
             nombre: 'Alan',
             password: "alan1234",
-            cantidadCuenta: 1000,
+            cantidadCuenta: 500,
         },
         {
             nombre: "Emilse",
             password: "emilse1234",
-            cantidadCuenta: 0,
+            cantidadCuenta: 10,
         },
         {
             nombre: "Lisset",
             password: "lisset1234",
-            cantidadCuenta: 0,
+            cantidadCuenta: 10,
         },
     ]
 
@@ -69,7 +73,7 @@ btnAgregarCuenta.addEventListener('click', function (e){
     if(usuarioACrear){
         msgEligeOtroUsuario.style.display = 'block';
     } else {
-        let NuevaCuenta = {nombre:document.getElementById('usuarioNuevaCuenta').value, password:document.getElementById('passwordNuevaCuenta').value, cantidadCuenta:0}
+        let NuevaCuenta = {nombre:document.getElementById('usuarioNuevaCuenta').value, password:document.getElementById('passwordNuevaCuenta').value, cantidadCuenta:10}
         usuarios.push(NuevaCuenta);
 
         document.getElementById('usuarioNuevaCuenta').value=''
@@ -127,18 +131,26 @@ usuarioEnUso = usuarios.find(usuario=> usuario.nombre === usuarioIntroducido );
 // funciones para opciones de usuario
 
 btnIngresarSaldo.addEventListener('click', function (){
+    if(usuarioEnUso.cantidadCuenta<=990){
     pantallaInicio.style.display = 'none';
     pantallaIngreso.style.display = 'none';
     pantallaOpcionesUsuario.style.display = 'none';
     pantallaIngresarSaldo.style.display = 'block';
+    } else {
+        saldoMaximo.style.display= 'block';
+    }
 })
 
 btnRetirarSaldo.addEventListener('click', function (){
-    pantallaInicio.style.display = 'none';
+    if(usuarioEnUso.cantidadCuenta<=10){
+    saldoMinimo.style.display= 'block';
+    } else {
+        pantallaInicio.style.display = 'none';
     pantallaIngreso.style.display = 'none';
     pantallaOpcionesUsuario.style.display = 'none';
     pantallaIngresarSaldo.style.display = 'none';
     pantallaRetirar.style.display = 'block';
+    }
 })
 
 // funciones pantalla ingresar saldo
@@ -148,33 +160,45 @@ function evaluaArimetica(fn) {
 
 btnIngresarMonto.addEventListener('click', function (e){
     e.preventDefault();
-    pantallaInicio.style.display = 'none';
-    pantallaIngreso.style.display = 'none';
-    pantallaOpcionesUsuario.style.display = 'block';
-    pantallaIngresarSaldo.style.display = 'none';
-    usuarioEnUso.cantidadCuenta=document.getElementById('saldoIngresa').value + '+' + usuarioEnUso.cantidadCuenta
-    let result = evaluaArimetica(usuarioEnUso.cantidadCuenta)
-    usuarioEnUso.cantidadCuenta= result
-    localStorage.setItem('user',usuarioIntroducido)
-    document.getElementById('saldoUsuario').textContent=usuarioEnUso.cantidadCuenta;
-    document.getElementById('saldoIngresa').value=''
+    let pruebaIngresoSaldo=document.getElementById('saldoIngresa').value + '+' + usuarioEnUso.cantidadCuenta;
+    let result = evaluaArimetica(pruebaIngresoSaldo)
+    if(result>990){
+        saldoMaximoIngresar.style.display='block';
+    } else {
+        pantallaInicio.style.display = 'none';
+        pantallaIngreso.style.display = 'none';
+        pantallaOpcionesUsuario.style.display = 'block';
+        pantallaIngresarSaldo.style.display = 'none';
+        usuarioEnUso.cantidadCuenta=document.getElementById('saldoIngresa').value + '+' + usuarioEnUso.cantidadCuenta
+        result = evaluaArimetica(usuarioEnUso.cantidadCuenta)
+        usuarioEnUso.cantidadCuenta= result
+        localStorage.setItem('user',usuarioIntroducido)
+        document.getElementById('saldoUsuario').textContent=usuarioEnUso.cantidadCuenta;
+        document.getElementById('saldoIngresa').value=''
+    }
 })
 
 // funciones pantalla retirar saldo
 
 btnIngresaRetiro.addEventListener('click', function (e){
     e.preventDefault();
+    let pruebaRetiroSaldo=usuarioEnUso.cantidadCuenta + '-' +  document.getElementById('retiroSaldo').value;
+    let result = evaluaArimetica(pruebaRetiroSaldo)
+    if(result>10){
     pantallaInicio.style.display = 'none';
     pantallaIngreso.style.display = 'none';
     pantallaOpcionesUsuario.style.display = 'block';
     pantallaIngresarSaldo.style.display = 'none';
     pantallaRetirar.style.display = 'none';
-    usuarioEnUso.cantidadCuenta= usuarioEnUso.cantidadCuenta + '-' +  document.getElementById('retiroSaldo').value
+    usuarioEnUso.cantidadCuenta= usuarioEnUso.cantidadCuenta + '-' +  document.getElementById('retiroSaldo').value;
     let result = evaluaArimetica(usuarioEnUso.cantidadCuenta)
     usuarioEnUso.cantidadCuenta= result
     localStorage.setItem('user',usuarioIntroducido)
     document.getElementById('saldoUsuario').textContent=usuarioEnUso.cantidadCuenta;
     document.getElementById('retiroSaldo').value='';
+    } else{
+        saldoMinimoIngresar.style.display='block';
+    }
 })
 
 // funcion cerrar sesion

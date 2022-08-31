@@ -118,3 +118,20 @@ body{
 #eligeOtroUsuario{
     display: none;
 }
+#saldoMaximo{
+    display: none;
+}
+#saldoMinimo{
+    display: none;
+}
+.alerta{
+    color: crimson;
+}
+
+#saldoMaximoIngresar{
+    display: none;
+}
+
+#saldoMinimoIngresar{
+    display: none;
+}
