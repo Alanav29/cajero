@@ -51,6 +51,7 @@ let usuarios = [
 btnIngreso.addEventListener('click', function (){
     pantallaInicio.style.display = 'none';
     pantallaIngreso.style.display = 'block';
+    usuarioError.style.display = 'none';
 
 })
 
