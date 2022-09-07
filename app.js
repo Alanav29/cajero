@@ -193,7 +193,7 @@ btnIngresaRetiro.addEventListener('click', function (e){
     e.preventDefault();
         let pruebaRetiroSaldo=usuarioEnUso.cantidadCuenta + '-' +  document.getElementById('retiroSaldo').value;
         let result = evaluaArimetica(pruebaRetiroSaldo)
-        if(result>10){
+        if(result>=10){
         esconderPantallas();
         pantallaOpcionesUsuario.style.display = 'block';
         saldoMinimoIngresar.style.display='none';
